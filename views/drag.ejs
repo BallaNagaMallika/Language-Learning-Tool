@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Learning Tool</title>
+    <style>
+        #word-bank, #drop-area {
+            border: 1px solid #ccc;
+            padding: 10px;
+            min-height: 50px;
+        }
+        .draggable {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px;
+            background-color: #f0f0f0;
+            cursor: move;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .drop-area {
+            border: 2px dashed #000;
+            width: 80%;
+            height: 60px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+            display: flex; /* Add flexbox to align words horizontally */
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px; /* Space between words */
+        }
+        
+        .word-bank {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .draggable {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: grab;
+            display: inline-block;
+        }
+        
+        .draggable:active {
+            cursor: grabbing;
+            opacity: 0.8;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #005f73;
+        }
+        
+        #result {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<%- include('footer') %>
+<body>
+    <%- include('header', { title: 'About' }) %>
+    <h1>Language Learning Tool</h1>
+    
+    <label for="language-select">Choose a language:</label>
+    <select id="language-select">
+        <option value="english">English</option>
+        <option value="german">German</option>
+        <option value="french">French</option>
+        <option value="spanish">Spanish</option>
+        <option value="chinese">Chinese</option>
+    </select>
+
+    <div id="word-bank">
+        <!-- Words will be loaded here -->
+    </div>
+
+    <div id="drop-area">
+        <span>Drop here to form the sentence</span>
+    </div>
+
+    <button onclick="checkSentence()">Check Sentence</button>
+    <p id="result"></p>
+
+    <script>
+        const wordBank = document.getElementById('word-bank');
+        const dropArea = document.getElementById('drop-area');
+
+        // Sentence bank for multiple languages
+        const sentences = {
+            english: {
+                words: ["I", "like", "learning", "languages"],
+                correct: "I like learning languages"
+            },
+            german: {
+                words: ["Ich", "mag", "Sprachen", "lernen"],
+                correct: "Ich mag Sprachen lernen"
+            },
+            french: {
+                words: ["J'aime", "apprendre", "les", "langues"],
+                correct: "J'aime apprendre les langues"
+            },
+            spanish: {
+                words: ["Me", "gusta", "aprender", "idiomas"],
+                correct: "Me gusta aprender idiomas"
+            },
+            chinese: {
+                words: ["我", "喜欢", "学习", "语言"],
+                correct: "我 喜欢 学习 语言"
+            }
+        };
+
+        // Load words based on language selection
+        function loadWords() {
+            const selectedLanguage = document.getElementById('language-select').value;
+            const selectedSentence = sentences[selectedLanguage];
+            
+            console.log(`Loading words for ${selectedLanguage}`); // Debugging message
+            
+            // Clear the word bank and drop area
+            wordBank.innerHTML = '';
+            dropArea.innerHTML = '<span>Drop here to form the sentence</span>';
+            
+            // Populate the word bank with words for the selected language
+            selectedSentence.words.forEach((word, index) => {
+                const wordDiv = document.createElement('div');
+                wordDiv.classList.add('draggable');
+                wordDiv.setAttribute('draggable', 'true');
+                wordDiv.id = `word${index + 1}`;
+                wordDiv.innerText = word;
+                wordDiv.addEventListener('dragstart', dragStart);
+                wordBank.appendChild(wordDiv);
+            });
+
+            // Ensure that the drag and drop events are initialized
+            dropArea.addEventListener('dragover', dragOver);
+            dropArea.addEventListener('drop', drop);
+        }
+
+        // Drag and drop functionality
+        function dragStart(e) {
+            e.dataTransfer.setData('text', e.target.id);
+        }
+
+        function dragOver(e) {
+            e.preventDefault(); // Allow drop
+        }
+
+        function drop(e) {
+            e.preventDefault();
+            const wordId = e.dataTransfer.getData('text');
+            const wordElement = document.getElementById(wordId);
+
+            // Append word to drop area if it's not already there
+            if (!dropArea.contains(wordElement)) {
+                dropArea.appendChild(wordElement);
+            }
+        }
+
+        // Check the sentence formation
+        function checkSentence() {
+            const selectedLanguage = document.getElementById('language-select').value;
+            const selectedSentence = sentences[selectedLanguage].correct;
+            
+            const formedSentence = Array.from(dropArea.querySelectorAll('.draggable'))
+                .map(word => word.innerText.trim()).join(' ');
+
+            console.log(`Formed Sentence: ${formedSentence}`); // Debugging message
+
+            if (formedSentence === selectedSentence) {
+                document.getElementById('result').innerText = "Correct!";
+                document.getElementById('result').style.color = "green";
+            } else {
+                document.getElementById('result').innerText = "Try again!";
+                document.getElementById('result').style.color = "red";
+            }
+        }
+
+        // Initialize with default language (English) on page load
+        window.onload = function() {
+            loadWords();
+            document.getElementById('language-select').addEventListener('change', loadWords);
+        };
+    </script>
+</body>
+</html>

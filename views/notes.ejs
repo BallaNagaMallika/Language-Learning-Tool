@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    transition: background-color 0.3s;
+}
+
+body:hover {
+    background-color: #e0f7fa;
+}
+
+/* Header styling (already included) */
+header {
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Notes Container */
+.notes-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* Add Note Link Styling */
+.add-note-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-note-link:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Note Styling */
+.note {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.note h2 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.note p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+/* Hover effect on Notes */
+.note:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading */
+.notes-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+    </style>
+</head>
+<body>
+    <%- include('header') %>
+    <div class="notes-container">
+        <h1>Notes</h1>
+        <a href="/add-note" class="add-note-link">Add New Note</a>
+        <% notes.forEach((note, index) => { %>
+            <div class="note">
+                <h2><%= index + 1 %>. <%= note.title %></h2>
+                <p><%= note.content %></p>
+            </div>
+        <% }) %>
+    </div>
+    <%- include('footer') %>
+</body>
+</html>

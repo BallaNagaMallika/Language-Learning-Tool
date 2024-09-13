@@ -1,0 +1,262 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    transition: background-color 0.3s;
+}
+
+/* Add hover effect on body */
+body:hover {
+    background-color: #e0f7fa;
+}
+
+/* Header Styling */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Navigation Styling */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+/* Hover effect on navigation links */
+nav ul li a:hover {
+    color: #e02cd1;
+}
+
+/* Main Content Styling */
+main {
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Quiz Container */
+.quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.quiz-question {
+    margin-bottom: 15px;
+}
+
+#quiz-feedback {
+    margin-top: 20px;
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Flashcards */
+.flashcard-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.flashcard {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    margin: 15px;
+    transition: transform 0.5s, background-color 0.5s;
+    perspective: 1000px;
+}
+
+.flashcard:hover {
+    background-color: #e0f7fa;
+    transform: scale(1.05) rotateY(180deg);
+}
+
+.flashcard .front, .flashcard .back {
+    display: none;
+}
+
+.flashcard:hover .front {
+    display: none;
+}
+
+.flashcard:hover .back {
+    display: block;
+}
+
+/* Form Styling */
+form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+    transition: transform 0.3s;
+}
+
+form:hover {
+    transform: scale(1.02);
+}
+
+/* Textarea and Select Styling */
+textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+/* Focus effect on input fields */
+textarea:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Button Styling */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Translation Result Styling */
+.translation-result {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.translation-result h3 {
+    color: #007bff;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.translation-result p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* Language Cards */
+.languages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.language {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    width: 220px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.language:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.language img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.language h3 {
+    margin-top: 15px;
+    color: #007bff;
+    font-size: 1.3em;
+}
+
+.language p {
+    margin: 10px 0;
+    color: #666;
+}
+
+.language .btn {
+    display: inline-block;
+    padding: 10px 15px;
+    color: #fff;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.language .btn:hover {
+    background-color: #0056b3;
+}

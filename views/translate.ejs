@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar Rules</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            transition: background-color 0.3s;
+        }
+
+        /* Header styling */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #ffeb3b;
+        }
+
+        /* Grammar rules container */
+        .grammar-rules {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .active {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Language buttons */
+        .language-buttons {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .language-buttons button {
+            margin: 10px;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .language-buttons button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Grammar rule items */
+        .grammar-rules ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .grammar-rules ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            font-size: 1.1em;
+            position: relative;
+        }
+
+        .grammar-rules ul li:before {
+            content: "•";
+            color: #007bff;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Hover effect for grammar rules */
+        .grammar-rules ul li:hover {
+            background-color: #f0f8ff;
+            padding-left: 15px;
+            transition: background-color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        /* Heading Styling */
+        h1, h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Section headings */
+        h2 {
+            font-size: 1.5em;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Include the Header -->
+    <%- include('header') %>
+
+    <h1>Grammar Rules</h1>
+
+    <!-- Language Selection Buttons -->
+    <div class="language-buttons">
+        <button onclick="showGrammar('german')">German</button>
+        <button onclick="showGrammar('chinese')">Chinese</button>
+        <button onclick="showGrammar('spanish')">Spanish</button>
+        <button onclick="showGrammar('french')">French</button>
+    </div>
+
+    <!-- German Grammar Rules -->
+    <div id="german" class="grammar-rules">
+        <h2>German Grammar Rules</h2>
+        <ul>
+            <li><b>Noun Genders:</b> German nouns have three genders: masculine, feminine, and neuter (der, die, das).</li>
+            <li><b>Cases:</b> German uses four cases: Nominative, Accusative, Dative, and Genitive.</li>
+            <li><b>Verb Conjugation:</b> Verbs change based on the subject and tense (e.g., ich gehe, du gehst).</li>
+        </ul>
+    </div>
+
+    <!-- Chinese Grammar Rules -->
+    <div id="chinese" class="grammar-rules">
+        <h2>Chinese Grammar Rules</h2>
+        <ul>
+            <li><b>Word Order:</b> Chinese typically follows a Subject-Verb-Object (SVO) word order.</li>
+            <li><b>Tones:</b> Chinese is a tonal language with four primary tones. Tone changes the meaning of words.</li>
+            <li><b>No Conjugation:</b> Chinese verbs do not conjugate based on tense or subject. The context or time words indicate tense.</li>
+        </ul>
+    </div>
+
+    <!-- Spanish Grammar Rules -->
+    <div id="spanish" class="grammar-rules">
+        <h2>Spanish Grammar Rules</h2>
+        <ul>
+            <li><b>Noun Genders:</b> Spanish nouns are either masculine or feminine, indicated by "el" (masculine) and "la" (feminine).</li>
+            <li><b>Verb Conjugation:</b> Verbs are conjugated based on the subject and tense (e.g., yo hablo, tú hablas).</li>
+            <li><b>Adjective Agreement:</b> Adjectives agree with the gender and number of the noun (e.g., una casa bonita, dos casas bonitas).</li>
+        </ul>
+    </div>
+
+    <!-- French Grammar Rules -->
+    <div id="french" class="grammar-rules">
+        <h2>French Grammar Rules</h2>
+        <ul>
+            <li><b>Noun Genders:</b> French nouns are masculine or feminine, marked by "le" (masculine) and "la" (feminine).</li>
+            <li><b>Verb Conjugation:</b> French verbs change based on subject and tense (e.g., je parle, tu parles).</li>
+            <li><b>Adjective Agreement:</b> Adjectives must agree in gender and number with the noun (e.g., un chat noir, une maison noire).</li>
+        </ul>
+    </div>
+
+    <!-- JavaScript to Toggle Display -->
+    <script>
+        function showGrammar(language) {
+            // Hide all grammar rule sections
+            document.querySelectorAll('.grammar-rules').forEach(function(el) {
+                el.classList.remove('active');
+            });
+
+            // Show the selected language's grammar rules
+            document.getElementById(language).classList.add('active');
+        }
+
+        // Set German grammar to be visible by default on page load
+        document.getElementById('german').classList.add('active');
+    </script>
+    <%- include('footer') %>
+</body>
+
+</html>

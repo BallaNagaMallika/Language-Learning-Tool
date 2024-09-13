@@ -1,0 +1,25 @@
+<%- include('header', { title: 'Quizzes' }) %>
+<section class="quizzes">
+    <h2>Quizzes</h2>
+    <form action="/submit-quiz" method="POST">
+        <% questions.forEach((question, index) => { %>
+            <div class="quiz-question">
+                <p><%= question.questionText %></p>
+                <% question.answers.forEach((answer, answerIndex) => { %>
+                    <label>
+                        <input type="radio" name="question-<%= index %>" value="<%= answerIndex %>">
+                        <%= answer %>
+                    </label>
+                <% }); %>
+            </div>
+        <% }); %>
+        <button type="submit">Submit</button>
+    </form>
+    <form action="/add-question" method="POST">
+        <input type="text" name="questionText" placeholder="Question Text" required>
+        <textarea name="answers" placeholder='["Answer1", "Answer2", "Answer3"]' required></textarea>
+        <button type="submit">Add Question</button>
+    </form>    
+</section>
+
+<%- include('footer') %>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    transition: background-color 0.3s;
+}
+
+body:hover {
+    background-color: #e0f7fa;
+}
+
+/* Header styling (already included) */
+header {
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* About Section Styling */
+.about {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.about:hover {
+    background-color: #f0f8ff;
+    transform: scale(1.02);
+}
+
+.about h2 {
+    font-size: 2em;
+    color: #007bff;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.about p {
+    font-size: 1.2em;
+    color: #555;
+    line-height: 1.8;
+    text-align: justify;
+    margin-top: 15px;
+}
+
+/* Footer styling */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+}
+
+    </style>
+</head>
+<body>
+<%- include('header', { title: 'About' }) %>
+<section class="about">
+    <h2>About Us</h2>
+    <p>The Language Learning Tool is a web-based platform designed to facilitate the acquisition of new vocabulary and phrases in foreign languages. We aim to make language learning accessible and engaging for students and travelers, helping them build their language skills in a fun and interactive manner.</p>
+</section>
+<%- include('footer') %>
+</body>
